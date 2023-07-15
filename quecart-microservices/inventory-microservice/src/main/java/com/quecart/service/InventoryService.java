@@ -1,7 +1,11 @@
 package com.quecart.service;
 
+import java.util.List;
+
+import com.quecart.dto.response.InventoryResponse;
+
 public interface InventoryService {
 
-	boolean isInStock(String skuCode);
+	List<InventoryResponse> isInStock(List<String> skuCode);
 
 }

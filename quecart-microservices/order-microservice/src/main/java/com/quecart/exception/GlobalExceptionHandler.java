@@ -11,8 +11,8 @@ import org.springframework.web.context.request.WebRequest;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-	@ExceptionHandler(ProductException.class)
-	public ResponseEntity<MyErrorDetails> currencyExchangeExceptionHandler(ProductException e,
+	@ExceptionHandler(OrderException.class)
+	public ResponseEntity<MyErrorDetails> currencyExchangeExceptionHandler(OrderException e,
 			WebRequest request) {
 		MyErrorDetails myErrorDetails = new MyErrorDetails(LocalDateTime.now(), e.getMessage(),
 				request.getDescription(false));
