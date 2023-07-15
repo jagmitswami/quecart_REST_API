@@ -23,6 +23,7 @@
 		<module>product-microservice</module>
 		<module>inventory-microservice</module>
 		<module>discovery-server-quecart</module>
+		<module>api-gateway-quecart</module>
 	</modules>
 	<dependencyManagement>
 	    <dependencies>
