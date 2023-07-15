@@ -28,7 +28,7 @@ public class OrderServiceImpl implements OrderService {
 
 	private final OrderRepository orderRepo;
 
-	private final WebClient webClient;
+	private final WebClient.Builder webClientBuilder;
 
 	@Override
 	public String placeOrder(OrderRequest orderRequest) {
@@ -40,8 +40,8 @@ public class OrderServiceImpl implements OrderService {
 		List<String> skuCodes = order.getOrderItems().stream().map(OrderItem::getSkuCode).toList();
 
 		// talk to inventory service
-		List<InventoryResponse> inventoryResponseList = webClient.get()
-				.uri("http://localhost:8002/quecart/inventory/get",
+		List<InventoryResponse> inventoryResponseList = webClientBuilder.build().get()
+				.uri("http://inventory-service/quecart/inventory/get",
 						uriBuilder -> uriBuilder.queryParam("skuCode", skuCodes).build())
 				.retrieve()
 				.bodyToMono(new ParameterizedTypeReference<List<InventoryResponse>>() {})
